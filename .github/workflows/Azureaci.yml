@@ -1,0 +1,18 @@
+on: [workflow_dispatch] 
+name: AzureACI
+
+jobs:
+  createaci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+      - name: Create ACI
+        uses: azure/CLI@v1
+        with:
+          azcliversion: latest
+          inlineScript: |
+            echo "Create an Azure Container Instance"
+            az container create -g ${{vars.RG_NAME}} --name mycontainerinstance --image learnacr0201.azurecr.io/nginx:mycopy --registry-password ${{secrets.ACR_PWD}} --registry-username learnacr0201 --ip-address public --dns-name-label learnacr0201
