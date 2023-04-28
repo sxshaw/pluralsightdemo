@@ -17,10 +17,10 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ${{ env.CONTAINER_REGISTRY }}
-          username: <acr name>
+          username: learnacr0201
           password: ${{ secrets.ACR_PWD }}
       - name: 'Deploy to Azure Web App for Container'
         uses: azure/webapps-deploy@v2
         with:
-          app-name: <Web App name>
+          app-name: runwebapp0201
           images: ${{ env.CONTAINER_REGISTRY }}/nginx:mycopy
