@@ -2,7 +2,7 @@ on: [workflow_dispatch]
 name: AzureWebAppContainer
 
 env:
-  CONTAINER_REGISTRY: <acr name>.azurecr.io
+  CONTAINER_REGISTRY: learnacr0201.azurecr.io
 
 jobs:
   azurecontainer:
